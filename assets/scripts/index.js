@@ -21,12 +21,14 @@ function getFormattedCurrentDateTime() {
 
 function getSeedForDay() {
   const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth() + 1;
-  const day = today.getDate();
+  const year = today.getUTCFullYear();
+  const month = today.getUTCMonth() + 1; // 0-11 -> 1-12
+  const day = today.getUTCDate();
+
   const dateStr = `${year}${month < 10 ? "0" : ""}${month}${
     day < 10 ? "0" : ""
   }${day}`;
+
   return parseInt(dateStr, 10);
 }
 
